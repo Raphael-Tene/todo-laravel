@@ -19,8 +19,8 @@ return new class extends Migration
 
         Schema::create('todo_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Todo::class);
-            $table->foreignIdFor(\App\Models\Tag::class);
+            $table->foreignIdFor(\App\Models\Todo::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -31,5 +31,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('tags');
+        Schema::dropIfExists('job_tag');
     }
 };
