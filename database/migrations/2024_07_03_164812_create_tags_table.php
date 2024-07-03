@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('todo', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('name');
             $table->timestamps();
-            $table->string('title');
-            $table->enum('status', ['new', 'in progress', 'done']);
+        });
+
+        Schema::create('todo_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(\App\Models\Todo::class);
+            $table->foreignIdFor(\App\Models\Tag::class);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('todo');
+        Schema::dropIfExists('tags');
     }
 };
