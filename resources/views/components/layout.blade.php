@@ -10,7 +10,7 @@
 </head>
 <body class="w-full h-full bg-gray-950">
     <x-nav/>
-<main class="container mx-auto">
+<main class="container text-gray-50 mt-4 mx-auto">
     {{ $slot }}
 </main>
 </body>
