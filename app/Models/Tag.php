@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
+    protected $table = 'tag';
+    protected $fillable = ['name'];
 
     public function todos()
     {
