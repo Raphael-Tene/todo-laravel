@@ -14,10 +14,13 @@
                         <x-nav-link route='/'>
                             Home
                         </x-nav-link>
+                        <x-nav-link route='todos/create'>
+                            Create Todo
+                        </x-nav-link>
                         <x-nav-link route='todos'>
                             Todos
                         </x-nav-link>
-
+                        
                     </div>
                 </div>
             </div>

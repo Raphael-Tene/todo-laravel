@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Todo extends Model
 {
     protected $table = 'todo';
-    protected $fillable = ['title', 'status'];
+    protected $fillable = ['title', 'status', 'user_id'];
     use HasFactory;
 
     public function user(): BelongsTo
