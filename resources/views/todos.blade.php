@@ -26,4 +26,5 @@
             </div>
         @endforeach
     </div>
+    {{ $todos->links() }}
 </x-layout>
