@@ -25,13 +25,13 @@ Route::delete('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-Route::get('/todos', [TodoController::class, 'index']);
 
-Route::get('/todos/create', [TodoController::class, 'create']);
-
-Route::post('/todos/store', [TodoController::class, 'store'])->name('todos.store');
-Route::get('/todos/{todo}/edit', [TodoController::class, 'edit']);
-Route::patch('/todos/{todo}', [TodoController::class, 'update'])->name('todos.update');
-
-Route::delete('/todos/{todo}', [TodoController::class, 'delete'])->name('todos.delete');
-Route::get('/todos/{todo}', [TodoController::class, 'show']);
+Route::middleware(['auth'])->prefix('todos')->group(function () {
+    Route::get('/', [TodoController::class, 'index']);
+    Route::get('/create', [TodoController::class, 'create']);
+    Route::post('/store', [TodoController::class, 'store'])->name('todos.store');
+    Route::get('/{todo}/edit', [TodoController::class, 'edit']);
+    Route::patch('/{todo}', [TodoController::class, 'update'])->name('todos.update');
+    Route::delete('/{todo}', [TodoController::class, 'delete'])->name('todos.delete');
+    Route::get('/{todo}', [TodoController::class, 'show']);
+});
