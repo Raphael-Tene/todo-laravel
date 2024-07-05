@@ -14,10 +14,10 @@
                         <x-nav-link route='/'>
                             Home
                         </x-nav-link>
-                        <x-nav-link route='/todos/create'>
+                        <x-nav-link route='todos/create'>
                             Create Todo
                         </x-nav-link>
-                        <x-nav-link route='/todos'>
+                        <x-nav-link route='todos'>
                             Todos
                         </x-nav-link>
                         
@@ -28,13 +28,20 @@
                 <div class="flex space-x-4">
                     @auth
                         <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Profile</a>
-                        <form method="POST" action="/">
+                        <form method="POST" action="/logout">
+
                             @csrf
+                            @method('DELETE')
                             <button type="submit" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</button>
                         </form>
                     @else
-                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
-                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                        
+                        <x-nav-link route='login'>
+                            Login
+                        </x-nav-link>
+                        <x-nav-link route='register'>
+                            Register
+                        </x-nav-link>
                     @endauth
                 </div>
             </div>
