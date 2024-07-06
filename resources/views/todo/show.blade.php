@@ -6,7 +6,9 @@
             <small class="ml-2 text-sm text-gray-600">{{ optional($todo->created_at)->format('j M Y, g:i a') }}</small>
             <div class=" flex items-center gap-3">
                 <small class="text-gray-400">{{$todo->user->name}}</small>
+                @can('update-todo', $todo)
                 <a href="/todos/{{ $todo->id }}/edit" class="bg-blue-500 text-white px-4 py-2 rounded-md">Edit</a>
+                @endcan
             </div>
             
         </div>

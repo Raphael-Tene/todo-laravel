@@ -26,10 +26,18 @@
                     </div>
                 </div>
             </div>
+            <div >
+                @auth()
+                    <x-nav-link class="text-sm text-gray-300" route='profile'>
+                   Hello     {{ auth()->user()->name }}
+                    </x-nav-link>
+                    
+                    
+                @endauth
+            </div>
             <div class="hidden sm:block sm:ml-6">
                 <div class="flex space-x-4">
                     @auth
-                        <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Profile</a>
                         <form method="POST" action="/logout">
 
                             @csrf

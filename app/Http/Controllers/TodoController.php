@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Todo;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TodoController extends Controller
 {
@@ -28,7 +31,7 @@ class TodoController extends Controller
         Todo::create([
             'title' => request('title'),
             'status' => request('status'),
-            'user_id' => 1 // ToDO: Auth::id()
+            'user_id' => Auth::id()
         ]);
 
         return redirect('/todos');
@@ -36,6 +39,9 @@ class TodoController extends Controller
 
     public function edit(Todo $todo)
     {
+
+        Gate::authorize('update-todo', $todo);
+
         return view('todo.edit', ['todo' => $todo]);
     }
 
